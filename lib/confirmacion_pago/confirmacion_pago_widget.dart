@@ -2,6 +2,7 @@ import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../main.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -81,7 +82,7 @@ class _ConfirmacionPagoWidgetState extends State<ConfirmacionPagoWidget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
               child: Text(
-                '\$65.00',
+                '\$286.00',
                 style: GoogleFonts.getFont(
                   'Overpass',
                   color: FlutterFlowTheme.of(context).primaryText,
@@ -93,7 +94,7 @@ class _ConfirmacionPagoWidgetState extends State<ConfirmacionPagoWidget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(24, 8, 24, 0),
               child: Text(
-                'Your payment has been confirmed, it may take 1-2 hours in order for your payment to go through and show up in your transation list.',
+                '¡Tu reserva ha sido exitosa!',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).bodyText2,
               ),
@@ -146,7 +147,7 @@ class _ConfirmacionPagoWidgetState extends State<ConfirmacionPagoWidget> {
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
                             child: Text(
-                              '\$425.24',
+                              '\$286.00',
                               style: FlutterFlowTheme.of(context).subtitle2,
                             ),
                           ),
@@ -165,8 +166,16 @@ class _ConfirmacionPagoWidgetState extends State<ConfirmacionPagoWidget> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        await Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.fade,
+                            duration: Duration(milliseconds: 0),
+                            reverseDuration: Duration(milliseconds: 0),
+                            child: NavBarPage(initialPage: 'Reserva'),
+                          ),
+                        );
                       },
                       text: 'Volver a inicio',
                       options: FFButtonOptions(

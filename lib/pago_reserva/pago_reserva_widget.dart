@@ -1,5 +1,6 @@
 import '../auth/auth_util.dart';
 import '../backend/backend.dart';
+import '../confirmacion_pago/confirmacion_pago_widget.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -241,7 +242,7 @@ class _PagoReservaWidgetState extends State<PagoReservaWidget> {
                                         FlutterFlowTheme.of(context).bodyText2,
                                   ),
                                   Text(
-                                    '[Price]',
+                                    '\$260',
                                     textAlign: TextAlign.end,
                                     style:
                                         FlutterFlowTheme.of(context).subtitle2,
@@ -263,7 +264,7 @@ class _PagoReservaWidgetState extends State<PagoReservaWidget> {
                                         FlutterFlowTheme.of(context).bodyText2,
                                   ),
                                   Text(
-                                    '[Price]',
+                                    '\$26',
                                     textAlign: TextAlign.end,
                                     style:
                                         FlutterFlowTheme.of(context).subtitle2,
@@ -285,7 +286,7 @@ class _PagoReservaWidgetState extends State<PagoReservaWidget> {
                                         FlutterFlowTheme.of(context).bodyText2,
                                   ),
                                   Text(
-                                    '[Price]',
+                                    '\$0',
                                     textAlign: TextAlign.end,
                                     style:
                                         FlutterFlowTheme.of(context).subtitle2,
@@ -307,7 +308,7 @@ class _PagoReservaWidgetState extends State<PagoReservaWidget> {
                                         FlutterFlowTheme.of(context).bodyText2,
                                   ),
                                   Text(
-                                    '[Order Total]',
+                                    '\$286',
                                     textAlign: TextAlign.end,
                                     style: FlutterFlowTheme.of(context).title2,
                                   ),
@@ -385,6 +386,12 @@ class _PagoReservaWidgetState extends State<PagoReservaWidget> {
                     fechaSalida: random_data.randomDate(),
                   );
                   await ReservasRecord.collection.doc().set(reservasCreateData);
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ConfirmacionPagoWidget(),
+                    ),
+                  );
                 },
                 text: 'Continuar',
                 options: FFButtonOptions(
