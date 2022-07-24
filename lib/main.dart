@@ -14,7 +14,6 @@ import 'index.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await FlutterFlowTheme.initialize();
 
   runApp(MyApp());
 }
@@ -25,15 +24,15 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 
   static _MyAppState of(BuildContext context) =>
-      context.findAncestorStateOfType<_MyAppState>()!;
+      context.findAncestorStateOfType<_MyAppState>();
 }
 
 class _MyAppState extends State<MyApp> {
-  Locale? _locale;
-  ThemeMode _themeMode = FlutterFlowTheme.themeMode;
+  Locale _locale;
+  ThemeMode _themeMode = ThemeMode.system;
 
-  late Stream<GuestayFirebaseUser> userStream;
-  GuestayFirebaseUser? initialUser;
+  Stream<GuestayFirebaseUser> userStream;
+  GuestayFirebaseUser initialUser;
   bool displaySplashImage = true;
 
   final authUserSub = authenticatedUserStream.listen((_) {});
@@ -59,7 +58,6 @@ class _MyAppState extends State<MyApp> {
   void setLocale(Locale value) => setState(() => _locale = value);
   void setThemeMode(ThemeMode mode) => setState(() {
         _themeMode = mode;
-        FlutterFlowTheme.saveThemeMode(mode);
       });
 
   @override
@@ -73,9 +71,10 @@ class _MyAppState extends State<MyApp> {
         GlobalCupertinoLocalizations.delegate,
       ],
       locale: _locale,
-      supportedLocales: const [Locale('en', '')],
+      supportedLocales: const [
+        Locale('es', ''),
+      ],
       theme: ThemeData(brightness: Brightness.light),
-      darkTheme: ThemeData(brightness: Brightness.dark),
       themeMode: _themeMode,
       home: initialUser == null || displaySplashImage
           ? Center(
@@ -87,7 +86,7 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
             )
-          : currentUser!.loggedIn
+          : currentUser.loggedIn
               ? NavBarPage()
               : RegistroLoginWidget(),
     );
@@ -95,9 +94,9 @@ class _MyAppState extends State<MyApp> {
 }
 
 class NavBarPage extends StatefulWidget {
-  NavBarPage({Key? key, this.initialPage}) : super(key: key);
+  NavBarPage({Key key, this.initialPage}) : super(key: key);
 
-  final String? initialPage;
+  final String initialPage;
 
   @override
   _NavBarPageState createState() => _NavBarPageState();
@@ -105,7 +104,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPage = 'Reserva';
+  String _currentPage = 'Inicio';
 
   @override
   void initState() {
@@ -116,7 +115,7 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'Reserva': ReservaWidget(),
+      'Inicio': InicioWidget(),
       'Favoritos': FavoritosWidget(),
       'Perfil': PerfilWidget(),
     };
@@ -135,11 +134,7 @@ class _NavBarPageState extends State<NavBarPage> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home_outlined,
-              size: 24,
-            ),
-            activeIcon: Icon(
-              Icons.home,
+              Icons.home_rounded,
               size: 24,
             ),
             label: 'Inicio',

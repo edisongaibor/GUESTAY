@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PagoReservaWidget extends StatefulWidget {
-  const PagoReservaWidget({Key? key}) : super(key: key);
+  const PagoReservaWidget({Key key}) : super(key: key);
 
   @override
   _PagoReservaWidgetState createState() => _PagoReservaWidgetState();
@@ -366,7 +366,7 @@ class _PagoReservaWidgetState extends State<PagoReservaWidget> {
               boxShadow: [
                 BoxShadow(
                   blurRadius: 4,
-                  color: Color(0x430F1113),
+                  color: Color(0xDBFFA500),
                   offset: Offset(0, -2),
                 )
               ],
@@ -397,7 +397,7 @@ class _PagoReservaWidgetState extends State<PagoReservaWidget> {
                 options: FFButtonOptions(
                   width: double.infinity,
                   height: 50,
-                  color: Color(0xDBFFA500),
+                  color: Color(0xFF0C0700),
                   textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                         fontFamily: 'Lexend Deca',
                         color: Colors.white,

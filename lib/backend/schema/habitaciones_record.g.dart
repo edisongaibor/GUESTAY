@@ -17,11 +17,10 @@ class _$HabitacionesRecordSerializer
   final String wireName = 'HabitacionesRecord';
 
   @override
-  Iterable<Object?> serialize(
-      Serializers serializers, HabitacionesRecord object,
+  Iterable<Object> serialize(Serializers serializers, HabitacionesRecord object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
-    Object? value;
+    final result = <Object>[];
+    Object value;
     value = object.nombre;
     if (value != null) {
       result
@@ -43,20 +42,20 @@ class _$HabitacionesRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
     }
-    value = object.ffRef;
+    value = object.reference;
     if (value != null) {
       result
         ..add('Document__Reference__Field')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType.nullable(Object)])));
+                DocumentReference, const [const FullType(Object)])));
     }
     return result;
   }
 
   @override
   HabitacionesRecord deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
+      Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new HabitacionesRecordBuilder();
 
@@ -64,25 +63,25 @@ class _$HabitacionesRecordSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object? value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'nombre':
           result.nombre = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'estado':
           result.estado = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool?;
+              specifiedType: const FullType(bool)) as bool;
           break;
         case 'costo':
           result.costo = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double?;
+              specifiedType: const FullType(double)) as double;
           break;
         case 'Document__Reference__Field':
-          result.ffRef = serializers.deserialize(value,
-              specifiedType: const FullType(DocumentReference, const [
-                const FullType.nullable(Object)
-              ])) as DocumentReference<Object?>?;
+          result.reference = serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      DocumentReference, const [const FullType(Object)]))
+              as DocumentReference<Object>;
           break;
       }
     }
@@ -93,19 +92,19 @@ class _$HabitacionesRecordSerializer
 
 class _$HabitacionesRecord extends HabitacionesRecord {
   @override
-  final String? nombre;
+  final String nombre;
   @override
-  final bool? estado;
+  final bool estado;
   @override
-  final double? costo;
+  final double costo;
   @override
-  final DocumentReference<Object?>? ffRef;
+  final DocumentReference<Object> reference;
 
   factory _$HabitacionesRecord(
-          [void Function(HabitacionesRecordBuilder)? updates]) =>
+          [void Function(HabitacionesRecordBuilder) updates]) =>
       (new HabitacionesRecordBuilder()..update(updates)).build();
 
-  _$HabitacionesRecord._({this.nombre, this.estado, this.costo, this.ffRef})
+  _$HabitacionesRecord._({this.nombre, this.estado, this.costo, this.reference})
       : super._();
 
   @override
@@ -124,14 +123,14 @@ class _$HabitacionesRecord extends HabitacionesRecord {
         nombre == other.nombre &&
         estado == other.estado &&
         costo == other.costo &&
-        ffRef == other.ffRef;
+        reference == other.reference;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
         $jc($jc($jc(0, nombre.hashCode), estado.hashCode), costo.hashCode),
-        ffRef.hashCode));
+        reference.hashCode));
   }
 
   @override
@@ -140,30 +139,31 @@ class _$HabitacionesRecord extends HabitacionesRecord {
           ..add('nombre', nombre)
           ..add('estado', estado)
           ..add('costo', costo)
-          ..add('ffRef', ffRef))
+          ..add('reference', reference))
         .toString();
   }
 }
 
 class HabitacionesRecordBuilder
     implements Builder<HabitacionesRecord, HabitacionesRecordBuilder> {
-  _$HabitacionesRecord? _$v;
+  _$HabitacionesRecord _$v;
 
-  String? _nombre;
-  String? get nombre => _$this._nombre;
-  set nombre(String? nombre) => _$this._nombre = nombre;
+  String _nombre;
+  String get nombre => _$this._nombre;
+  set nombre(String nombre) => _$this._nombre = nombre;
 
-  bool? _estado;
-  bool? get estado => _$this._estado;
-  set estado(bool? estado) => _$this._estado = estado;
+  bool _estado;
+  bool get estado => _$this._estado;
+  set estado(bool estado) => _$this._estado = estado;
 
-  double? _costo;
-  double? get costo => _$this._costo;
-  set costo(double? costo) => _$this._costo = costo;
+  double _costo;
+  double get costo => _$this._costo;
+  set costo(double costo) => _$this._costo = costo;
 
-  DocumentReference<Object?>? _ffRef;
-  DocumentReference<Object?>? get ffRef => _$this._ffRef;
-  set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
+  DocumentReference<Object> _reference;
+  DocumentReference<Object> get reference => _$this._reference;
+  set reference(DocumentReference<Object> reference) =>
+      _$this._reference = reference;
 
   HabitacionesRecordBuilder() {
     HabitacionesRecord._initializeBuilder(this);
@@ -175,7 +175,7 @@ class HabitacionesRecordBuilder
       _nombre = $v.nombre;
       _estado = $v.estado;
       _costo = $v.costo;
-      _ffRef = $v.ffRef;
+      _reference = $v.reference;
       _$v = null;
     }
     return this;
@@ -188,7 +188,7 @@ class HabitacionesRecordBuilder
   }
 
   @override
-  void update(void Function(HabitacionesRecordBuilder)? updates) {
+  void update(void Function(HabitacionesRecordBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -196,7 +196,7 @@ class HabitacionesRecordBuilder
   _$HabitacionesRecord build() {
     final _$result = _$v ??
         new _$HabitacionesRecord._(
-            nombre: nombre, estado: estado, costo: costo, ffRef: ffRef);
+            nombre: nombre, estado: estado, costo: costo, reference: reference);
     replace(_$result);
     return _$result;
   }

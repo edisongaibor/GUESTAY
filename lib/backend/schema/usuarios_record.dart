@@ -11,25 +11,31 @@ abstract class UsuariosRecord
   static Serializer<UsuariosRecord> get serializer =>
       _$usuariosRecordSerializer;
 
-  String? get email;
+  @nullable
+  String get email;
 
+  @nullable
   @BuiltValueField(wireName: 'display_name')
-  String? get displayName;
+  String get displayName;
 
+  @nullable
   @BuiltValueField(wireName: 'photo_url')
-  String? get photoUrl;
+  String get photoUrl;
 
-  String? get uid;
+  @nullable
+  String get uid;
 
+  @nullable
   @BuiltValueField(wireName: 'created_time')
-  DateTime? get createdTime;
+  DateTime get createdTime;
 
+  @nullable
   @BuiltValueField(wireName: 'phone_number')
-  String? get phoneNumber;
+  String get phoneNumber;
 
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
+  DocumentReference get reference;
 
   static void _initializeBuilder(UsuariosRecordBuilder builder) => builder
     ..email = ''
@@ -43,11 +49,11 @@ abstract class UsuariosRecord
 
   static Stream<UsuariosRecord> getDocument(DocumentReference ref) => ref
       .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+      .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
 
   static Future<UsuariosRecord> getDocumentOnce(DocumentReference ref) => ref
       .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+      .then((s) => serializers.deserializeWith(serializer, serializedData(s)));
 
   UsuariosRecord._();
   factory UsuariosRecord([void Function(UsuariosRecordBuilder) updates]) =
@@ -56,29 +62,23 @@ abstract class UsuariosRecord
   static UsuariosRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+          {...mapFromFirestore(data), kDocumentReferenceField: reference});
 }
 
 Map<String, dynamic> createUsuariosRecordData({
-  String? email,
-  String? displayName,
-  String? photoUrl,
-  String? uid,
-  DateTime? createdTime,
-  String? phoneNumber,
-}) {
-  final firestoreData = serializers.toFirestore(
-    UsuariosRecord.serializer,
-    UsuariosRecord(
-      (u) => u
-        ..email = email
-        ..displayName = displayName
-        ..photoUrl = photoUrl
-        ..uid = uid
-        ..createdTime = createdTime
-        ..phoneNumber = phoneNumber,
-    ),
-  );
-
-  return firestoreData;
-}
+  String email,
+  String displayName,
+  String photoUrl,
+  String uid,
+  DateTime createdTime,
+  String phoneNumber,
+}) =>
+    serializers.toFirestore(
+        UsuariosRecord.serializer,
+        UsuariosRecord((u) => u
+          ..email = email
+          ..displayName = displayName
+          ..photoUrl = photoUrl
+          ..uid = uid
+          ..createdTime = createdTime
+          ..phoneNumber = phoneNumber));

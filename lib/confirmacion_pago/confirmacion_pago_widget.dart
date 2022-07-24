@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ConfirmacionPagoWidget extends StatefulWidget {
-  const ConfirmacionPagoWidget({Key? key}) : super(key: key);
+  const ConfirmacionPagoWidget({Key key}) : super(key: key);
 
   @override
   _ConfirmacionPagoWidgetState createState() => _ConfirmacionPagoWidgetState();
@@ -173,7 +173,7 @@ class _ConfirmacionPagoWidgetState extends State<ConfirmacionPagoWidget> {
                             type: PageTransitionType.fade,
                             duration: Duration(milliseconds: 0),
                             reverseDuration: Duration(milliseconds: 0),
-                            child: NavBarPage(initialPage: 'Reserva'),
+                            child: NavBarPage(initialPage: 'Inicio'),
                           ),
                         );
                       },

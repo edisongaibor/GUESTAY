@@ -11,15 +11,18 @@ abstract class HabitacionesRecord
   static Serializer<HabitacionesRecord> get serializer =>
       _$habitacionesRecordSerializer;
 
-  String? get nombre;
+  @nullable
+  String get nombre;
 
-  bool? get estado;
+  @nullable
+  bool get estado;
 
-  double? get costo;
+  @nullable
+  double get costo;
 
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
+  DocumentReference get reference;
 
   static void _initializeBuilder(HabitacionesRecordBuilder builder) => builder
     ..nombre = ''
@@ -31,11 +34,11 @@ abstract class HabitacionesRecord
 
   static Stream<HabitacionesRecord> getDocument(DocumentReference ref) => ref
       .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+      .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
 
   static Future<HabitacionesRecord> getDocumentOnce(DocumentReference ref) =>
       ref.get().then(
-          (s) => serializers.deserializeWith(serializer, serializedData(s))!);
+          (s) => serializers.deserializeWith(serializer, serializedData(s)));
 
   HabitacionesRecord._();
   factory HabitacionesRecord(
@@ -45,23 +48,17 @@ abstract class HabitacionesRecord
   static HabitacionesRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+          {...mapFromFirestore(data), kDocumentReferenceField: reference});
 }
 
 Map<String, dynamic> createHabitacionesRecordData({
-  String? nombre,
-  bool? estado,
-  double? costo,
-}) {
-  final firestoreData = serializers.toFirestore(
-    HabitacionesRecord.serializer,
-    HabitacionesRecord(
-      (h) => h
-        ..nombre = nombre
-        ..estado = estado
-        ..costo = costo,
-    ),
-  );
-
-  return firestoreData;
-}
+  String nombre,
+  bool estado,
+  double costo,
+}) =>
+    serializers.toFirestore(
+        HabitacionesRecord.serializer,
+        HabitacionesRecord((h) => h
+          ..nombre = nombre
+          ..estado = estado
+          ..costo = costo));

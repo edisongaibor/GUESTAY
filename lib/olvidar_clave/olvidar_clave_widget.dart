@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class OlvidarClaveWidget extends StatefulWidget {
-  const OlvidarClaveWidget({Key? key}) : super(key: key);
+  const OlvidarClaveWidget({Key key}) : super(key: key);
 
   @override
   _OlvidarClaveWidgetState createState() => _OlvidarClaveWidgetState();
 }
 
 class _OlvidarClaveWidgetState extends State<OlvidarClaveWidget> {
-  TextEditingController? emailAddressLoginController;
+  TextEditingController emailAddressLoginController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -66,7 +66,7 @@ class _OlvidarClaveWidgetState extends State<OlvidarClaveWidget> {
                       children: [
                         Image.asset(
                           'assets/images/guess_3.png',
-                          width: 240,
+                          width: 210,
                           height: 100,
                           fit: BoxFit.cover,
                         ),

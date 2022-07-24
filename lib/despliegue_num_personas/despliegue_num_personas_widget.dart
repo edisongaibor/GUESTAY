@@ -6,13 +6,14 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../main.dart';
+import '../pago_reserva/pago_reserva_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DespliegueNumPersonasWidget extends StatefulWidget {
-  const DespliegueNumPersonasWidget({Key? key}) : super(key: key);
+  const DespliegueNumPersonasWidget({Key key}) : super(key: key);
 
   @override
   _DespliegueNumPersonasWidgetState createState() =>
@@ -21,8 +22,8 @@ class DespliegueNumPersonasWidget extends StatefulWidget {
 
 class _DespliegueNumPersonasWidgetState
     extends State<DespliegueNumPersonasWidget> {
-  DateTimeRange? despliegueCalendarioSelectedDay;
-  int? countControllerValue;
+  DateTimeRange despliegueCalendarioSelectedDay;
+  int countControllerValue;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -76,7 +77,7 @@ class _DespliegueNumPersonasWidgetState
                       color: Color(0xDBFFA500),
                       weekFormat: false,
                       weekStartsMonday: true,
-                      onChange: (DateTimeRange? newSelectedDate) {
+                      onChange: (DateTimeRange newSelectedDate) {
                         setState(() =>
                             despliegueCalendarioSelectedDay = newSelectedDate);
                       },
@@ -85,6 +86,7 @@ class _DespliegueNumPersonasWidgetState
                       dateStyle: FlutterFlowTheme.of(context).bodyText1,
                       selectedDateStyle: TextStyle(),
                       inactiveDateStyle: TextStyle(),
+                      locale: FFLocalizations.of(context).languageCode,
                     ),
                   ],
                 ),
@@ -208,13 +210,9 @@ class _DespliegueNumPersonasWidgetState
                                   onTap: () async {
                                     await Navigator.push(
                                       context,
-                                      PageTransition(
-                                        type: PageTransitionType.fade,
-                                        duration: Duration(milliseconds: 0),
-                                        reverseDuration:
-                                            Duration(milliseconds: 0),
-                                        child:
-                                            NavBarPage(initialPage: 'Reserva'),
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            NavBarPage(initialPage: 'Inicio'),
                                       ),
                                     );
                                   },
@@ -246,6 +244,13 @@ class _DespliegueNumPersonasWidgetState
                                       await ReservasRecord.collection
                                           .doc()
                                           .set(reservasCreateData);
+                                      await Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              PagoReservaWidget(),
+                                        ),
+                                      );
                                     },
                                     text: 'Buscar',
                                     options: FFButtonOptions(

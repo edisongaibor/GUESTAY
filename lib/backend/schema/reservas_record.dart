@@ -11,20 +11,24 @@ abstract class ReservasRecord
   static Serializer<ReservasRecord> get serializer =>
       _$reservasRecordSerializer;
 
-  double? get costo;
+  @nullable
+  double get costo;
 
+  @nullable
   @BuiltValueField(wireName: 'num_personas')
-  int? get numPersonas;
+  int get numPersonas;
 
+  @nullable
   @BuiltValueField(wireName: 'fecha_salida')
-  DateTime? get fechaSalida;
+  DateTime get fechaSalida;
 
+  @nullable
   @BuiltValueField(wireName: 'fecha_ingreso')
-  DateTime? get fechaIngreso;
+  DateTime get fechaIngreso;
 
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
-  DocumentReference? get ffRef;
-  DocumentReference get reference => ffRef!;
+  DocumentReference get reference;
 
   static void _initializeBuilder(ReservasRecordBuilder builder) => builder
     ..costo = 0.0
@@ -35,11 +39,11 @@ abstract class ReservasRecord
 
   static Stream<ReservasRecord> getDocument(DocumentReference ref) => ref
       .snapshots()
-      .map((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+      .map((s) => serializers.deserializeWith(serializer, serializedData(s)));
 
   static Future<ReservasRecord> getDocumentOnce(DocumentReference ref) => ref
       .get()
-      .then((s) => serializers.deserializeWith(serializer, serializedData(s))!);
+      .then((s) => serializers.deserializeWith(serializer, serializedData(s)));
 
   ReservasRecord._();
   factory ReservasRecord([void Function(ReservasRecordBuilder) updates]) =
@@ -48,25 +52,19 @@ abstract class ReservasRecord
   static ReservasRecord getDocumentFromData(
           Map<String, dynamic> data, DocumentReference reference) =>
       serializers.deserializeWith(serializer,
-          {...mapFromFirestore(data), kDocumentReferenceField: reference})!;
+          {...mapFromFirestore(data), kDocumentReferenceField: reference});
 }
 
 Map<String, dynamic> createReservasRecordData({
-  double? costo,
-  int? numPersonas,
-  DateTime? fechaSalida,
-  DateTime? fechaIngreso,
-}) {
-  final firestoreData = serializers.toFirestore(
-    ReservasRecord.serializer,
-    ReservasRecord(
-      (r) => r
-        ..costo = costo
-        ..numPersonas = numPersonas
-        ..fechaSalida = fechaSalida
-        ..fechaIngreso = fechaIngreso,
-    ),
-  );
-
-  return firestoreData;
-}
+  double costo,
+  int numPersonas,
+  DateTime fechaSalida,
+  DateTime fechaIngreso,
+}) =>
+    serializers.toFirestore(
+        ReservasRecord.serializer,
+        ReservasRecord((r) => r
+          ..costo = costo
+          ..numPersonas = numPersonas
+          ..fechaSalida = fechaSalida
+          ..fechaIngreso = fechaIngreso));

@@ -9,21 +9,21 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegistroLoginWidget extends StatefulWidget {
-  const RegistroLoginWidget({Key? key}) : super(key: key);
+  const RegistroLoginWidget({Key key}) : super(key: key);
 
   @override
   _RegistroLoginWidgetState createState() => _RegistroLoginWidgetState();
 }
 
 class _RegistroLoginWidgetState extends State<RegistroLoginWidget> {
-  TextEditingController? emailAddressController;
-  TextEditingController? passwordController;
-  late bool passwordVisibility;
-  TextEditingController? passwordConfirmController;
-  late bool passwordConfirmVisibility;
-  TextEditingController? emailAddressLoginController;
-  TextEditingController? passwordLoginController;
-  late bool passwordLoginVisibility;
+  TextEditingController emailAddressController;
+  TextEditingController passwordController;
+  bool passwordVisibility;
+  TextEditingController passwordConfirmController;
+  bool passwordConfirmVisibility;
+  TextEditingController emailAddressLoginController;
+  TextEditingController passwordLoginController;
+  bool passwordLoginVisibility;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -83,7 +83,7 @@ class _RegistroLoginWidgetState extends State<RegistroLoginWidget> {
                       children: [
                         Image.asset(
                           'assets/images/guess_3.png',
-                          width: 240,
+                          width: 210,
                           height: 100,
                           fit: BoxFit.cover,
                         ),
@@ -140,16 +140,10 @@ class _RegistroLoginWidgetState extends State<RegistroLoginWidget> {
                                                     fontWeight:
                                                         FontWeight.normal,
                                                   ),
-                                              hintStyle: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyText1
-                                                  .override(
-                                                    fontFamily: 'Lexend Deca',
-                                                    color: Color(0xFF95A1AC),
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                  ),
+                                              hintStyle: TextStyle(
+                                                fontWeight: FontWeight.normal,
+                                                fontSize: 12,
+                                              ),
                                               enabledBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
                                                   color: Color(0x00000000),
@@ -172,91 +166,96 @@ class _RegistroLoginWidgetState extends State<RegistroLoginWidget> {
                                                   EdgeInsetsDirectional
                                                       .fromSTEB(20, 30, 20, 30),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText2
-                                                .override(
-                                                  fontFamily: 'Poppins',
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.normal,
+                                              fontSize: 12,
+                                            ),
                                           ),
                                         ),
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0, 12, 0, 0),
-                                          child: TextFormField(
-                                            controller: passwordLoginController,
-                                            obscureText:
-                                                !passwordLoginVisibility,
-                                            decoration: InputDecoration(
-                                              labelText: 'Contraseña',
-                                              labelStyle: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyText1
-                                                  .override(
-                                                    fontFamily: 'Lexend Deca',
-                                                    color: Color(0xFF95A1AC),
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.normal,
+                                          child: Container(
+                                            width: 350,
+                                            child: TextFormField(
+                                              controller:
+                                                  passwordLoginController,
+                                              obscureText:
+                                                  !passwordLoginVisibility,
+                                              decoration: InputDecoration(
+                                                labelText: 'Contraseña',
+                                                labelStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyText1
+                                                    .override(
+                                                      fontFamily: 'Lexend Deca',
+                                                      color: Color(0xFF95A1AC),
+                                                      fontSize: 14,
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                    ),
+                                                hintStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyText2
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 1,
                                                   ),
-                                              hintStyle: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyText1
-                                                  .override(
-                                                    fontFamily: 'Lexend Deca',
-                                                    color: Color(0xFF95A1AC),
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.normal,
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 1,
                                                   ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1,
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
                                                 ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              filled: true,
-                                              fillColor: Colors.white,
-                                              contentPadding:
-                                                  EdgeInsetsDirectional
-                                                      .fromSTEB(20, 30, 20, 30),
-                                              suffixIcon: InkWell(
-                                                onTap: () => setState(
-                                                  () => passwordLoginVisibility =
-                                                      !passwordLoginVisibility,
-                                                ),
-                                                focusNode: FocusNode(
-                                                    skipTraversal: true),
-                                                child: Icon(
-                                                  passwordLoginVisibility
-                                                      ? Icons
-                                                          .visibility_outlined
-                                                      : Icons
-                                                          .visibility_off_outlined,
-                                                  color: Color(0xFF95A1AC),
-                                                  size: 20,
+                                                filled: true,
+                                                fillColor: Colors.white,
+                                                contentPadding:
+                                                    EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                            20, 30, 20, 30),
+                                                suffixIcon: InkWell(
+                                                  onTap: () => setState(
+                                                    () => passwordLoginVisibility =
+                                                        !passwordLoginVisibility,
+                                                  ),
+                                                  focusNode: FocusNode(
+                                                      skipTraversal: true),
+                                                  child: Icon(
+                                                    passwordLoginVisibility
+                                                        ? Icons
+                                                            .visibility_outlined
+                                                        : Icons
+                                                            .visibility_off_outlined,
+                                                    color: Color(0xFF95A1AC),
+                                                    size: 20,
+                                                  ),
                                                 ),
                                               ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText2
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText2
-                                                .override(
-                                                  fontFamily: 'Poppins',
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.normal,
-                                                ),
                                           ),
                                         ),
                                         Padding(
@@ -268,9 +267,9 @@ class _RegistroLoginWidgetState extends State<RegistroLoginWidget> {
                                               final user =
                                                   await signInWithEmail(
                                                 context,
-                                                emailAddressLoginController!
+                                                emailAddressLoginController
                                                     .text,
-                                                passwordLoginController!.text,
+                                                passwordLoginController.text,
                                               );
                                               if (user == null) {
                                                 return;
@@ -283,7 +282,7 @@ class _RegistroLoginWidgetState extends State<RegistroLoginWidget> {
                                                   builder: (context) =>
                                                       NavBarPage(
                                                           initialPage:
-                                                              'Reserva'),
+                                                              'Inicio'),
                                                 ),
                                                 (r) => false,
                                               );
@@ -380,7 +379,7 @@ class _RegistroLoginWidgetState extends State<RegistroLoginWidget> {
                                                       builder: (context) =>
                                                           NavBarPage(
                                                               initialPage:
-                                                                  'Reserva'),
+                                                                  'Inicio'),
                                                     ),
                                                     (r) => false,
                                                   );
@@ -427,7 +426,7 @@ class _RegistroLoginWidgetState extends State<RegistroLoginWidget> {
                                                       builder: (context) =>
                                                           NavBarPage(
                                                               initialPage:
-                                                                  'Reserva'),
+                                                                  'Inicio'),
                                                     ),
                                                     (r) => false,
                                                   );
@@ -694,8 +693,8 @@ class _RegistroLoginWidgetState extends State<RegistroLoginWidget> {
                                               final user =
                                                   await createAccountWithEmail(
                                                 context,
-                                                emailAddressController!.text,
-                                                passwordController!.text,
+                                                emailAddressController.text,
+                                                passwordController.text,
                                               );
                                               if (user == null) {
                                                 return;
@@ -708,7 +707,7 @@ class _RegistroLoginWidgetState extends State<RegistroLoginWidget> {
                                                   builder: (context) =>
                                                       NavBarPage(
                                                           initialPage:
-                                                              'Reserva'),
+                                                              'Inicio'),
                                                 ),
                                                 (r) => false,
                                               );
@@ -762,7 +761,7 @@ class _RegistroLoginWidgetState extends State<RegistroLoginWidget> {
                                                       builder: (context) =>
                                                           NavBarPage(
                                                               initialPage:
-                                                                  'Reserva'),
+                                                                  'Inicio'),
                                                     ),
                                                     (r) => false,
                                                   );
@@ -809,7 +808,7 @@ class _RegistroLoginWidgetState extends State<RegistroLoginWidget> {
                                                       builder: (context) =>
                                                           NavBarPage(
                                                               initialPage:
-                                                                  'Reserva'),
+                                                                  'Inicio'),
                                                     ),
                                                     (r) => false,
                                                   );

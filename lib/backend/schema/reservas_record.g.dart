@@ -17,10 +17,10 @@ class _$ReservasRecordSerializer
   final String wireName = 'ReservasRecord';
 
   @override
-  Iterable<Object?> serialize(Serializers serializers, ReservasRecord object,
+  Iterable<Object> serialize(Serializers serializers, ReservasRecord object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
-    Object? value;
+    final result = <Object>[];
+    Object value;
     value = object.costo;
     if (value != null) {
       result
@@ -48,20 +48,20 @@ class _$ReservasRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(DateTime)));
     }
-    value = object.ffRef;
+    value = object.reference;
     if (value != null) {
       result
         ..add('Document__Reference__Field')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(
-                DocumentReference, const [const FullType.nullable(Object)])));
+                DocumentReference, const [const FullType(Object)])));
     }
     return result;
   }
 
   @override
   ReservasRecord deserialize(
-      Serializers serializers, Iterable<Object?> serialized,
+      Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = new ReservasRecordBuilder();
 
@@ -69,29 +69,29 @@ class _$ReservasRecordSerializer
     while (iterator.moveNext()) {
       final key = iterator.current as String;
       iterator.moveNext();
-      final Object? value = iterator.current;
+      final Object value = iterator.current;
       switch (key) {
         case 'costo':
           result.costo = serializers.deserialize(value,
-              specifiedType: const FullType(double)) as double?;
+              specifiedType: const FullType(double)) as double;
           break;
         case 'num_personas':
           result.numPersonas = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int?;
+              specifiedType: const FullType(int)) as int;
           break;
         case 'fecha_salida':
           result.fechaSalida = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime?;
+              specifiedType: const FullType(DateTime)) as DateTime;
           break;
         case 'fecha_ingreso':
           result.fechaIngreso = serializers.deserialize(value,
-              specifiedType: const FullType(DateTime)) as DateTime?;
+              specifiedType: const FullType(DateTime)) as DateTime;
           break;
         case 'Document__Reference__Field':
-          result.ffRef = serializers.deserialize(value,
-              specifiedType: const FullType(DocumentReference, const [
-                const FullType.nullable(Object)
-              ])) as DocumentReference<Object?>?;
+          result.reference = serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      DocumentReference, const [const FullType(Object)]))
+              as DocumentReference<Object>;
           break;
       }
     }
@@ -102,17 +102,17 @@ class _$ReservasRecordSerializer
 
 class _$ReservasRecord extends ReservasRecord {
   @override
-  final double? costo;
+  final double costo;
   @override
-  final int? numPersonas;
+  final int numPersonas;
   @override
-  final DateTime? fechaSalida;
+  final DateTime fechaSalida;
   @override
-  final DateTime? fechaIngreso;
+  final DateTime fechaIngreso;
   @override
-  final DocumentReference<Object?>? ffRef;
+  final DocumentReference<Object> reference;
 
-  factory _$ReservasRecord([void Function(ReservasRecordBuilder)? updates]) =>
+  factory _$ReservasRecord([void Function(ReservasRecordBuilder) updates]) =>
       (new ReservasRecordBuilder()..update(updates)).build();
 
   _$ReservasRecord._(
@@ -120,7 +120,7 @@ class _$ReservasRecord extends ReservasRecord {
       this.numPersonas,
       this.fechaSalida,
       this.fechaIngreso,
-      this.ffRef})
+      this.reference})
       : super._();
 
   @override
@@ -139,7 +139,7 @@ class _$ReservasRecord extends ReservasRecord {
         numPersonas == other.numPersonas &&
         fechaSalida == other.fechaSalida &&
         fechaIngreso == other.fechaIngreso &&
-        ffRef == other.ffRef;
+        reference == other.reference;
   }
 
   @override
@@ -149,7 +149,7 @@ class _$ReservasRecord extends ReservasRecord {
             $jc($jc($jc(0, costo.hashCode), numPersonas.hashCode),
                 fechaSalida.hashCode),
             fechaIngreso.hashCode),
-        ffRef.hashCode));
+        reference.hashCode));
   }
 
   @override
@@ -159,35 +159,36 @@ class _$ReservasRecord extends ReservasRecord {
           ..add('numPersonas', numPersonas)
           ..add('fechaSalida', fechaSalida)
           ..add('fechaIngreso', fechaIngreso)
-          ..add('ffRef', ffRef))
+          ..add('reference', reference))
         .toString();
   }
 }
 
 class ReservasRecordBuilder
     implements Builder<ReservasRecord, ReservasRecordBuilder> {
-  _$ReservasRecord? _$v;
+  _$ReservasRecord _$v;
 
-  double? _costo;
-  double? get costo => _$this._costo;
-  set costo(double? costo) => _$this._costo = costo;
+  double _costo;
+  double get costo => _$this._costo;
+  set costo(double costo) => _$this._costo = costo;
 
-  int? _numPersonas;
-  int? get numPersonas => _$this._numPersonas;
-  set numPersonas(int? numPersonas) => _$this._numPersonas = numPersonas;
+  int _numPersonas;
+  int get numPersonas => _$this._numPersonas;
+  set numPersonas(int numPersonas) => _$this._numPersonas = numPersonas;
 
-  DateTime? _fechaSalida;
-  DateTime? get fechaSalida => _$this._fechaSalida;
-  set fechaSalida(DateTime? fechaSalida) => _$this._fechaSalida = fechaSalida;
+  DateTime _fechaSalida;
+  DateTime get fechaSalida => _$this._fechaSalida;
+  set fechaSalida(DateTime fechaSalida) => _$this._fechaSalida = fechaSalida;
 
-  DateTime? _fechaIngreso;
-  DateTime? get fechaIngreso => _$this._fechaIngreso;
-  set fechaIngreso(DateTime? fechaIngreso) =>
+  DateTime _fechaIngreso;
+  DateTime get fechaIngreso => _$this._fechaIngreso;
+  set fechaIngreso(DateTime fechaIngreso) =>
       _$this._fechaIngreso = fechaIngreso;
 
-  DocumentReference<Object?>? _ffRef;
-  DocumentReference<Object?>? get ffRef => _$this._ffRef;
-  set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
+  DocumentReference<Object> _reference;
+  DocumentReference<Object> get reference => _$this._reference;
+  set reference(DocumentReference<Object> reference) =>
+      _$this._reference = reference;
 
   ReservasRecordBuilder() {
     ReservasRecord._initializeBuilder(this);
@@ -200,7 +201,7 @@ class ReservasRecordBuilder
       _numPersonas = $v.numPersonas;
       _fechaSalida = $v.fechaSalida;
       _fechaIngreso = $v.fechaIngreso;
-      _ffRef = $v.ffRef;
+      _reference = $v.reference;
       _$v = null;
     }
     return this;
@@ -213,7 +214,7 @@ class ReservasRecordBuilder
   }
 
   @override
-  void update(void Function(ReservasRecordBuilder)? updates) {
+  void update(void Function(ReservasRecordBuilder) updates) {
     if (updates != null) updates(this);
   }
 
@@ -225,7 +226,7 @@ class ReservasRecordBuilder
             numPersonas: numPersonas,
             fechaSalida: fechaSalida,
             fechaIngreso: fechaIngreso,
-            ffRef: ffRef);
+            reference: reference);
     replace(_$result);
     return _$result;
   }

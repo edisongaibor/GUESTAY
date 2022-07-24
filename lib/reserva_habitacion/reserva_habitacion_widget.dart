@@ -6,9 +6,10 @@ import '../pago_reserva/pago_reserva_widget.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ReservaHabitacionWidget extends StatefulWidget {
-  const ReservaHabitacionWidget({Key? key}) : super(key: key);
+  const ReservaHabitacionWidget({Key key}) : super(key: key);
 
   @override
   _ReservaHabitacionWidgetState createState() =>
@@ -16,6 +17,7 @@ class ReservaHabitacionWidget extends StatefulWidget {
 }
 
 class _ReservaHabitacionWidgetState extends State<ReservaHabitacionWidget> {
+  PageController pageViewController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -86,7 +88,7 @@ class _ReservaHabitacionWidgetState extends State<ReservaHabitacionWidget> {
                   Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(16, 12, 0, 0),
                     child: Text(
-                      'Full Street Address',
+                      'Habitación ejecutiva',
                       style: FlutterFlowTheme.of(context).title1,
                     ),
                   ),
@@ -241,15 +243,6 @@ class _ReservaHabitacionWidgetState extends State<ReservaHabitacionWidget> {
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 8, 0, 0),
-                                  child: Text(
-                                    '1',
-                                    style:
-                                        FlutterFlowTheme.of(context).subtitle1,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 4, 0, 0),
                                   child: Text(
                                     'Baño',
@@ -279,25 +272,16 @@ class _ReservaHabitacionWidgetState extends State<ReservaHabitacionWidget> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(
-                                  Icons.legend_toggle_rounded,
+                                  Icons.wifi_outlined,
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
                                   size: 36,
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0, 8, 0, 0),
-                                  child: Text(
-                                    '15',
-                                    style:
-                                        FlutterFlowTheme.of(context).subtitle1,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 4, 0, 0),
                                   child: Text(
-                                    'm2',
+                                    'Wi-Fi',
                                     style:
                                         FlutterFlowTheme.of(context).bodyText2,
                                   ),
@@ -308,6 +292,233 @@ class _ReservaHabitacionWidgetState extends State<ReservaHabitacionWidget> {
                         ),
                       ],
                     ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(12, 0, 12, 24),
+                    child: Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      alignment: WrapAlignment.start,
+                      crossAxisAlignment: WrapCrossAlignment.start,
+                      direction: Axis.horizontal,
+                      runAlignment: WrapAlignment.start,
+                      verticalDirection: VerticalDirection.down,
+                      clipBehavior: Clip.none,
+                      children: [
+                        Container(
+                          width: double.infinity,
+                          height: 120,
+                          constraints: BoxConstraints(
+                            maxWidth: 110,
+                          ),
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.local_parking_sharp,
+                                  size: 36,
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 4, 0, 0),
+                                  child: Text(
+                                    'Parqueadero',
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyText2,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: double.infinity,
+                          height: 120,
+                          constraints: BoxConstraints(
+                            maxWidth: 110,
+                          ),
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.pool,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 36,
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 4, 0, 0),
+                                  child: Text(
+                                    'Piscina',
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyText2,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: double.infinity,
+                          height: 120,
+                          constraints: BoxConstraints(
+                            maxWidth: 110,
+                          ),
+                          decoration: BoxDecoration(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(4, 4, 4, 4),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.free_breakfast,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 36,
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 4, 0, 0),
+                                  child: Text(
+                                    'Desayuno',
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyText2,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
+                    child: Text(
+                      'Fotos',
+                      style: FlutterFlowTheme.of(context).bodyText1,
+                    ),
+                  ),
+                  Container(
+                    width: 400,
+                    height: 300,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                    ),
+                    child: Container(
+                      width: double.infinity,
+                      height: 400,
+                      child: Stack(
+                        children: [
+                          Padding(
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 50),
+                            child: PageView(
+                              controller: pageViewController ??=
+                                  PageController(initialPage: 0),
+                              scrollDirection: Axis.horizontal,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20, 20, 20, 20),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(15),
+                                    child: Image.network(
+                                      'https://zcms.hu/continentalhotelbudapestcom/img/room/executive_room2.jpg',
+                                      width: 300,
+                                      height: 300,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20, 20, 20, 20),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(15),
+                                    child: Image.network(
+                                      'https://zcms.hu/continentalhotelbudapestcom/img/room/executive_room.jpg',
+                                      width: 100,
+                                      height: 100,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 5, 5, 5),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(15),
+                                    child: Image.network(
+                                      'https://www.swissotel.com/assets/0/92/2119/6442452244/6935/6937/6442451661/bc4287b8-211d-4980-ad11-a84648c0a90d.jpg',
+                                      width: 100,
+                                      height: 100,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(0, 1),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20, 20, 20, 20),
+                              child: SmoothPageIndicator(
+                                controller: pageViewController ??=
+                                    PageController(initialPage: 0),
+                                count: 3,
+                                axisDirection: Axis.horizontal,
+                                onDotClicked: (i) {
+                                  pageViewController.animateToPage(
+                                    i,
+                                    duration: Duration(milliseconds: 500),
+                                    curve: Curves.ease,
+                                  );
+                                },
+                                effect: ExpandingDotsEffect(
+                                  expansionFactor: 2,
+                                  spacing: 8,
+                                  radius: 16,
+                                  dotWidth: 16,
+                                  dotHeight: 16,
+                                  dotColor: Colors.black,
+                                  activeDotColor: Color(0xDBFFA500),
+                                  paintStyle: PaintingStyle.fill,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 200,
+                    decoration: BoxDecoration(),
                   ),
                 ],
               ),

@@ -3,11 +3,11 @@ import 'package:rxdart/rxdart.dart';
 
 class GuestayFirebaseUser {
   GuestayFirebaseUser(this.user);
-  User? user;
+  User user;
   bool get loggedIn => user != null;
 }
 
-GuestayFirebaseUser? currentUser;
+GuestayFirebaseUser currentUser;
 bool get loggedIn => currentUser?.loggedIn ?? false;
 Stream<GuestayFirebaseUser> guestayFirebaseUserStream() => FirebaseAuth.instance
     .authStateChanges()
