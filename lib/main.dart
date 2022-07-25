@@ -115,8 +115,8 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'Inicio': InicioWidget(),
       'Favoritos': FavoritosWidget(),
+      'Inicio': InicioWidget(),
       'Perfil': PerfilWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPage);
@@ -134,22 +134,22 @@ class _NavBarPageState extends State<NavBarPage> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.home_rounded,
+              Icons.book,
               size: 24,
             ),
-            label: 'Inicio',
+            activeIcon: Icon(
+              Icons.book,
+              size: 24,
+            ),
+            label: 'Viajes',
             tooltip: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.favorite,
+              Icons.home_rounded,
               size: 24,
             ),
-            activeIcon: Icon(
-              Icons.favorite,
-              size: 24,
-            ),
-            label: 'Favoritos',
+            label: 'Inicio',
             tooltip: '',
           ),
           BottomNavigationBarItem(

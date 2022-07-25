@@ -27,12 +27,16 @@ abstract class ReservasRecord
   DateTime get fechaIngreso;
 
   @nullable
+  String get usuario;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
   static void _initializeBuilder(ReservasRecordBuilder builder) => builder
     ..costo = 0.0
-    ..numPersonas = 0;
+    ..numPersonas = 0
+    ..usuario = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('reservas');
@@ -60,6 +64,7 @@ Map<String, dynamic> createReservasRecordData({
   int numPersonas,
   DateTime fechaSalida,
   DateTime fechaIngreso,
+  String usuario,
 }) =>
     serializers.toFirestore(
         ReservasRecord.serializer,
@@ -67,4 +72,5 @@ Map<String, dynamic> createReservasRecordData({
           ..costo = costo
           ..numPersonas = numPersonas
           ..fechaSalida = fechaSalida
-          ..fechaIngreso = fechaIngreso));
+          ..fechaIngreso = fechaIngreso
+          ..usuario = usuario));

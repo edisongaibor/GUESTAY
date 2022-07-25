@@ -15,10 +15,19 @@ abstract class HabitacionesRecord
   String get nombre;
 
   @nullable
-  bool get estado;
+  double get costo;
 
   @nullable
-  double get costo;
+  String get imagen;
+
+  @nullable
+  String get capacidad;
+
+  @nullable
+  String get idHabitacion;
+
+  @nullable
+  String get descripcion;
 
   @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
@@ -26,8 +35,11 @@ abstract class HabitacionesRecord
 
   static void _initializeBuilder(HabitacionesRecordBuilder builder) => builder
     ..nombre = ''
-    ..estado = false
-    ..costo = 0.0;
+    ..costo = 0.0
+    ..imagen = ''
+    ..capacidad = ''
+    ..idHabitacion = ''
+    ..descripcion = '';
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('habitaciones');
@@ -53,12 +65,18 @@ abstract class HabitacionesRecord
 
 Map<String, dynamic> createHabitacionesRecordData({
   String nombre,
-  bool estado,
   double costo,
+  String imagen,
+  String capacidad,
+  String idHabitacion,
+  String descripcion,
 }) =>
     serializers.toFirestore(
         HabitacionesRecord.serializer,
         HabitacionesRecord((h) => h
           ..nombre = nombre
-          ..estado = estado
-          ..costo = costo));
+          ..costo = costo
+          ..imagen = imagen
+          ..capacidad = capacidad
+          ..idHabitacion = idHabitacion
+          ..descripcion = descripcion));

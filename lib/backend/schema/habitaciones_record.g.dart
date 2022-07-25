@@ -28,19 +28,40 @@ class _$HabitacionesRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.estado;
-    if (value != null) {
-      result
-        ..add('estado')
-        ..add(
-            serializers.serialize(value, specifiedType: const FullType(bool)));
-    }
     value = object.costo;
     if (value != null) {
       result
         ..add('costo')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(double)));
+    }
+    value = object.imagen;
+    if (value != null) {
+      result
+        ..add('imagen')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.capacidad;
+    if (value != null) {
+      result
+        ..add('capacidad')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.idHabitacion;
+    if (value != null) {
+      result
+        ..add('idHabitacion')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.descripcion;
+    if (value != null) {
+      result
+        ..add('descripcion')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
     }
     value = object.reference;
     if (value != null) {
@@ -69,13 +90,25 @@ class _$HabitacionesRecordSerializer
           result.nombre = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'estado':
-          result.estado = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
-          break;
         case 'costo':
           result.costo = serializers.deserialize(value,
               specifiedType: const FullType(double)) as double;
+          break;
+        case 'imagen':
+          result.imagen = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'capacidad':
+          result.capacidad = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'idHabitacion':
+          result.idHabitacion = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'descripcion':
+          result.descripcion = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
         case 'Document__Reference__Field':
           result.reference = serializers.deserialize(value,
@@ -94,9 +127,15 @@ class _$HabitacionesRecord extends HabitacionesRecord {
   @override
   final String nombre;
   @override
-  final bool estado;
-  @override
   final double costo;
+  @override
+  final String imagen;
+  @override
+  final String capacidad;
+  @override
+  final String idHabitacion;
+  @override
+  final String descripcion;
   @override
   final DocumentReference<Object> reference;
 
@@ -104,7 +143,14 @@ class _$HabitacionesRecord extends HabitacionesRecord {
           [void Function(HabitacionesRecordBuilder) updates]) =>
       (new HabitacionesRecordBuilder()..update(updates)).build();
 
-  _$HabitacionesRecord._({this.nombre, this.estado, this.costo, this.reference})
+  _$HabitacionesRecord._(
+      {this.nombre,
+      this.costo,
+      this.imagen,
+      this.capacidad,
+      this.idHabitacion,
+      this.descripcion,
+      this.reference})
       : super._();
 
   @override
@@ -121,15 +167,25 @@ class _$HabitacionesRecord extends HabitacionesRecord {
     if (identical(other, this)) return true;
     return other is HabitacionesRecord &&
         nombre == other.nombre &&
-        estado == other.estado &&
         costo == other.costo &&
+        imagen == other.imagen &&
+        capacidad == other.capacidad &&
+        idHabitacion == other.idHabitacion &&
+        descripcion == other.descripcion &&
         reference == other.reference;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, nombre.hashCode), estado.hashCode), costo.hashCode),
+        $jc(
+            $jc(
+                $jc(
+                    $jc($jc($jc(0, nombre.hashCode), costo.hashCode),
+                        imagen.hashCode),
+                    capacidad.hashCode),
+                idHabitacion.hashCode),
+            descripcion.hashCode),
         reference.hashCode));
   }
 
@@ -137,8 +193,11 @@ class _$HabitacionesRecord extends HabitacionesRecord {
   String toString() {
     return (newBuiltValueToStringHelper('HabitacionesRecord')
           ..add('nombre', nombre)
-          ..add('estado', estado)
           ..add('costo', costo)
+          ..add('imagen', imagen)
+          ..add('capacidad', capacidad)
+          ..add('idHabitacion', idHabitacion)
+          ..add('descripcion', descripcion)
           ..add('reference', reference))
         .toString();
   }
@@ -152,13 +211,25 @@ class HabitacionesRecordBuilder
   String get nombre => _$this._nombre;
   set nombre(String nombre) => _$this._nombre = nombre;
 
-  bool _estado;
-  bool get estado => _$this._estado;
-  set estado(bool estado) => _$this._estado = estado;
-
   double _costo;
   double get costo => _$this._costo;
   set costo(double costo) => _$this._costo = costo;
+
+  String _imagen;
+  String get imagen => _$this._imagen;
+  set imagen(String imagen) => _$this._imagen = imagen;
+
+  String _capacidad;
+  String get capacidad => _$this._capacidad;
+  set capacidad(String capacidad) => _$this._capacidad = capacidad;
+
+  String _idHabitacion;
+  String get idHabitacion => _$this._idHabitacion;
+  set idHabitacion(String idHabitacion) => _$this._idHabitacion = idHabitacion;
+
+  String _descripcion;
+  String get descripcion => _$this._descripcion;
+  set descripcion(String descripcion) => _$this._descripcion = descripcion;
 
   DocumentReference<Object> _reference;
   DocumentReference<Object> get reference => _$this._reference;
@@ -173,8 +244,11 @@ class HabitacionesRecordBuilder
     final $v = _$v;
     if ($v != null) {
       _nombre = $v.nombre;
-      _estado = $v.estado;
       _costo = $v.costo;
+      _imagen = $v.imagen;
+      _capacidad = $v.capacidad;
+      _idHabitacion = $v.idHabitacion;
+      _descripcion = $v.descripcion;
       _reference = $v.reference;
       _$v = null;
     }
@@ -196,7 +270,13 @@ class HabitacionesRecordBuilder
   _$HabitacionesRecord build() {
     final _$result = _$v ??
         new _$HabitacionesRecord._(
-            nombre: nombre, estado: estado, costo: costo, reference: reference);
+            nombre: nombre,
+            costo: costo,
+            imagen: imagen,
+            capacidad: capacidad,
+            idHabitacion: idHabitacion,
+            descripcion: descripcion,
+            reference: reference);
     replace(_$result);
     return _$result;
   }

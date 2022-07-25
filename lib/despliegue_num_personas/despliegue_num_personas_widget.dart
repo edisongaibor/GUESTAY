@@ -5,8 +5,8 @@ import '../flutter_flow/flutter_flow_count_controller.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../lista_habitaciones/lista_habitaciones_widget.dart';
 import '../main.dart';
-import '../pago_reserva/pago_reserva_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -246,9 +246,12 @@ class _DespliegueNumPersonasWidgetState
                                           .set(reservasCreateData);
                                       await Navigator.push(
                                         context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              PagoReservaWidget(),
+                                        PageTransition(
+                                          type: PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 0),
+                                          reverseDuration:
+                                              Duration(milliseconds: 0),
+                                          child: ListaHabitacionesWidget(),
                                         ),
                                       );
                                     },

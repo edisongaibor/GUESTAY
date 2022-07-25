@@ -160,8 +160,8 @@ class _InicioWidgetState extends State<InicioWidget>
                   children: [
                     Align(
                       alignment: AlignmentDirectional(0.05, -1),
-                      child: Image.network(
-                        'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+                      child: Image.asset(
+                        'assets/images/christian-lambert-ycyXpdhCnp8-unsplash.jpg',
                         width: double.infinity,
                         height: 500,
                         fit: BoxFit.cover,
@@ -372,8 +372,8 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                 Radius.circular(
                                                                     12),
                                                           ),
-                                                          child: Image.network(
-                                                            'https://media-cdn.tripadvisor.com/media/photo-s/22/b9/95/62/mansion-alcazar-boutique.jpg',
+                                                          child: Image.asset(
+                                                            'assets/images/6Xnyu2ua6gaUB40nAA3x_large.jpg',
                                                             width:
                                                                 double.infinity,
                                                             height: 110,
@@ -481,7 +481,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                           8,
                                                                           0),
                                                                   child: Text(
-                                                                    '\$220 USD',
+                                                                    '\$150 USD',
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyText1
@@ -546,8 +546,8 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                 Radius.circular(
                                                                     12),
                                                           ),
-                                                          child: Image.network(
-                                                            'https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2018/11/05/15414159791355.jpg',
+                                                          child: Image.asset(
+                                                            'assets/images/mansion-alcazar-boutique.jpg',
                                                             width:
                                                                 double.infinity,
                                                             height: 110,
@@ -655,7 +655,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                           8,
                                                                           0),
                                                                   child: Text(
-                                                                    '\$220 USD',
+                                                                    '\$300 USD',
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyText1
@@ -766,9 +766,8 @@ class _InicioWidgetState extends State<InicioWidget>
                                                               topRight: Radius
                                                                   .circular(12),
                                                             ),
-                                                            child:
-                                                                Image.network(
-                                                              'https://www.turismo.gob.ec/wp-content/uploads/2019/04/FOTOGRAFIA-1.jpg',
+                                                            child: Image.asset(
+                                                              'assets/images/FOTOGRAFIA-1.jpg',
                                                               width: double
                                                                   .infinity,
                                                               height: 200,
@@ -877,7 +876,7 @@ class _InicioWidgetState extends State<InicioWidget>
                                                                           8,
                                                                           0),
                                                                   child: Text(
-                                                                    '\$220 USD',
+                                                                    'Ver Hotel',
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyText1

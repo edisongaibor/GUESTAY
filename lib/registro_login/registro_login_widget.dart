@@ -53,8 +53,8 @@ class _RegistroLoginWidgetState extends State<RegistroLoginWidget> {
             color: Color(0xFF14181B),
             image: DecorationImage(
               fit: BoxFit.cover,
-              image: Image.network(
-                'https://images.unsplash.com/photo-1525824236856-8c0a31dfe3be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8d2F0ZXJmYWxsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
+              image: Image.asset(
+                'assets/images/df3hg_',
               ).image,
             ),
           ),
@@ -65,8 +65,8 @@ class _RegistroLoginWidgetState extends State<RegistroLoginWidget> {
               color: Color(0x990F1113),
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: Image.network(
-                  'https://images.unsplash.com/photo-1555572262-b205fbb407dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
+                image: Image.asset(
+                  'assets/images/ole-jorgen-TFZ92HdJJOw-unsplash.jpg',
                 ).image,
               ),
             ),

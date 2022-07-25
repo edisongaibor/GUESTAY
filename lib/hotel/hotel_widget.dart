@@ -109,9 +109,9 @@ class _HotelWidgetState extends State<HotelWidget>
             color: FlutterFlowTheme.of(context).primaryBackground,
             image: DecorationImage(
               fit: BoxFit.cover,
-              image: CachedNetworkImageProvider(
-                'https://images.unsplash.com/photo-1576354302919-96748cb8299e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=629&q=80',
-              ),
+              image: Image.asset(
+                'assets/images/mateo-fernandez-XTC538P_eWk-unsplash.jpg',
+              ).image,
             ),
           ),
           child: Column(
@@ -158,173 +158,166 @@ class _HotelWidgetState extends State<HotelWidget>
               ),
               Align(
                 alignment: AlignmentDirectional(0, -0.15),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 300, 0, 0),
-                  child: Container(
-                    width: double.infinity,
-                    height: 400,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Color(0x60090F13), Color(0x7B0F1314)],
-                        stops: [0, 0.5],
-                        begin: AlignmentDirectional(0, -1),
-                        end: AlignmentDirectional(0, 1),
-                      ),
-                      borderRadius: BorderRadius.circular(0),
-                      border: Border.all(
-                        color: Color(0x94000000),
-                      ),
+                child: Container(
+                  width: double.infinity,
+                  height: 400,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [Color(0x60090F13), Color(0x7B0F1314)],
+                      stops: [0, 0.5],
+                      begin: AlignmentDirectional(0, -1),
+                      end: AlignmentDirectional(0, 1),
                     ),
-                    child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Hotel Sonesta',
-                            style: FlutterFlowTheme.of(context).title1.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                  fontSize: 32,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                          ).animated(
-                              [animationsMap['textOnPageLoadAnimation1']]),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 12, 0, 12),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Loja',
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(0),
+                      bottomRight: Radius.circular(0),
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40),
+                    ),
+                    border: Border.all(
+                      color: Color(0xA6242424),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Hotel Sonesta',
+                          style: FlutterFlowTheme.of(context).title1.override(
+                                fontFamily: 'Poppins',
+                                color: Colors.white,
+                                fontSize: 32,
+                                fontWeight: FontWeight.w500,
+                              ),
+                        ).animated([animationsMap['textOnPageLoadAnimation1']]),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 12),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Loja',
+                                    style: FlutterFlowTheme.of(context)
+                                        .title3
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: Colors.white,
+                                        ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0, 8, 0, 0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        RatingBarIndicator(
+                                          itemBuilder: (context, index) => Icon(
+                                            Icons.star,
+                                            color: Color(0xDBFFA500),
+                                          ),
+                                          direction: Axis.horizontal,
+                                          rating: 4,
+                                          unratedColor: Color(0x9AFFFFFF),
+                                          itemCount: 5,
+                                          itemSize: 16,
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  8, 0, 0, 0),
+                                          child: Text(
+                                            '4.7',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyText2
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBtnText,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              InkWell(
+                                onTap: () async {
+                                  await Navigator.push(
+                                    context,
+                                    PageTransition(
+                                      type: PageTransitionType.fade,
+                                      duration: Duration(milliseconds: 0),
+                                      reverseDuration:
+                                          Duration(milliseconds: 0),
+                                      child: ListaHabitacionesWidget(),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryBtnText,
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8, 0, 8, 0),
+                                    child: Text(
+                                      'Ver habitaciones',
                                       style: FlutterFlowTheme.of(context)
-                                          .title3
+                                          .bodyText1
                                           .override(
                                             fontFamily: 'Poppins',
-                                            color: Colors.white,
+                                            color: Color(0xFFE08B00),
                                           ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 8, 0, 0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          RatingBarIndicator(
-                                            itemBuilder: (context, index) =>
-                                                Icon(
-                                              Icons.star,
-                                              color: Color(0xDBFFA500),
-                                            ),
-                                            direction: Axis.horizontal,
-                                            rating: 4,
-                                            unratedColor: Color(0x9AFFFFFF),
-                                            itemCount: 5,
-                                            itemSize: 16,
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    8, 0, 0, 0),
-                                            child: Text(
-                                              '4.7',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText2
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryBtnText,
-                                                      ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                InkWell(
-                                  onTap: () async {
-                                    await Navigator.push(
-                                      context,
-                                      PageTransition(
-                                        type: PageTransitionType.fade,
-                                        duration: Duration(milliseconds: 0),
-                                        reverseDuration:
-                                            Duration(milliseconds: 0),
-                                        child: ListaHabitacionesWidget(),
-                                      ),
-                                    );
-                                  },
-                                  child: Container(
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBtnText,
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    alignment: AlignmentDirectional(0, 0),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8, 0, 8, 0),
-                                      child: Text(
-                                        'Ver habitaciones',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color: Color(0xFFE08B00),
-                                            ),
-                                      ),
                                     ),
                                   ),
                                 ),
-                              ],
-                            ).animated(
-                                [animationsMap['rowOnPageLoadAnimation']]),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
-                            child: Text(
-                              'Descripcion',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyText2
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                            ).animated(
-                                [animationsMap['textOnPageLoadAnimation2']]),
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
-                            child: Text(
-                              'Exclusivo hotel cerca del centro de Loja que se destaca por su seguridad y tranquilidad. Ubicado en la ciudadela Zamora, es la opción perfecta para vacaciones y negocios. Piscina Disponible. Wifi Gratis Disponible. Sauna Disponible.',
-                              style: FlutterFlowTheme.of(context)
-                                  .subtitle2
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.white,
-                                    fontSize: 14,
-                                  ),
-                            ).animated(
-                                [animationsMap['textOnPageLoadAnimation3']]),
-                          ),
-                        ],
-                      ),
+                              ),
+                            ],
+                          ).animated([animationsMap['rowOnPageLoadAnimation']]),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 4),
+                          child: Text(
+                            'Descripcion',
+                            style:
+                                FlutterFlowTheme.of(context).bodyText2.override(
+                                      fontFamily: 'Poppins',
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                          ).animated(
+                              [animationsMap['textOnPageLoadAnimation2']]),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
+                          child: Text(
+                            'Exclusivo hotel cerca del centro de Loja que se destaca por su seguridad y tranquilidad. Ubicado en la ciudadela Zamora, es la opción perfecta para vacaciones y negocios. Piscina Disponible. Wifi Gratis Disponible. Sauna Disponible.',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyText1
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  color: FlutterFlowTheme.of(context).lineColor,
+                                ),
+                          ).animated(
+                              [animationsMap['textOnPageLoadAnimation3']]),
+                        ),
+                      ],
                     ),
                   ),
                 ),

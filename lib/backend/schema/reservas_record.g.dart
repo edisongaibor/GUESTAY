@@ -48,6 +48,13 @@ class _$ReservasRecordSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(DateTime)));
     }
+    value = object.usuario;
+    if (value != null) {
+      result
+        ..add('usuario')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.reference;
     if (value != null) {
       result
@@ -87,6 +94,10 @@ class _$ReservasRecordSerializer
           result.fechaIngreso = serializers.deserialize(value,
               specifiedType: const FullType(DateTime)) as DateTime;
           break;
+        case 'usuario':
+          result.usuario = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
         case 'Document__Reference__Field':
           result.reference = serializers.deserialize(value,
                   specifiedType: const FullType(
@@ -110,6 +121,8 @@ class _$ReservasRecord extends ReservasRecord {
   @override
   final DateTime fechaIngreso;
   @override
+  final String usuario;
+  @override
   final DocumentReference<Object> reference;
 
   factory _$ReservasRecord([void Function(ReservasRecordBuilder) updates]) =>
@@ -120,6 +133,7 @@ class _$ReservasRecord extends ReservasRecord {
       this.numPersonas,
       this.fechaSalida,
       this.fechaIngreso,
+      this.usuario,
       this.reference})
       : super._();
 
@@ -139,6 +153,7 @@ class _$ReservasRecord extends ReservasRecord {
         numPersonas == other.numPersonas &&
         fechaSalida == other.fechaSalida &&
         fechaIngreso == other.fechaIngreso &&
+        usuario == other.usuario &&
         reference == other.reference;
   }
 
@@ -146,9 +161,11 @@ class _$ReservasRecord extends ReservasRecord {
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc($jc($jc(0, costo.hashCode), numPersonas.hashCode),
-                fechaSalida.hashCode),
-            fechaIngreso.hashCode),
+            $jc(
+                $jc($jc($jc(0, costo.hashCode), numPersonas.hashCode),
+                    fechaSalida.hashCode),
+                fechaIngreso.hashCode),
+            usuario.hashCode),
         reference.hashCode));
   }
 
@@ -159,6 +176,7 @@ class _$ReservasRecord extends ReservasRecord {
           ..add('numPersonas', numPersonas)
           ..add('fechaSalida', fechaSalida)
           ..add('fechaIngreso', fechaIngreso)
+          ..add('usuario', usuario)
           ..add('reference', reference))
         .toString();
   }
@@ -185,6 +203,10 @@ class ReservasRecordBuilder
   set fechaIngreso(DateTime fechaIngreso) =>
       _$this._fechaIngreso = fechaIngreso;
 
+  String _usuario;
+  String get usuario => _$this._usuario;
+  set usuario(String usuario) => _$this._usuario = usuario;
+
   DocumentReference<Object> _reference;
   DocumentReference<Object> get reference => _$this._reference;
   set reference(DocumentReference<Object> reference) =>
@@ -201,6 +223,7 @@ class ReservasRecordBuilder
       _numPersonas = $v.numPersonas;
       _fechaSalida = $v.fechaSalida;
       _fechaIngreso = $v.fechaIngreso;
+      _usuario = $v.usuario;
       _reference = $v.reference;
       _$v = null;
     }
@@ -226,6 +249,7 @@ class ReservasRecordBuilder
             numPersonas: numPersonas,
             fechaSalida: fechaSalida,
             fechaIngreso: fechaIngreso,
+            usuario: usuario,
             reference: reference);
     replace(_$result);
     return _$result;
