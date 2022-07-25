@@ -31,7 +31,7 @@ class _ListaHabitacionesWidgetState extends State<ListaHabitacionesWidget> {
               width: 50,
               height: 50,
               child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: Color(0xFFE08B00),
               ),
             ),
           );
@@ -83,7 +83,7 @@ class _ListaHabitacionesWidgetState extends State<ListaHabitacionesWidget> {
                           width: 50,
                           height: 50,
                           child: CircularProgressIndicator(
-                            color: FlutterFlowTheme.of(context).primaryColor,
+                            color: Color(0xFFE08B00),
                           ),
                         ),
                       );

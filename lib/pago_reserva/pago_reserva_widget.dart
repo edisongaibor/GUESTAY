@@ -37,7 +37,7 @@ class _PagoReservaWidgetState extends State<PagoReservaWidget> {
               width: 50,
               height: 50,
               child: CircularProgressIndicator(
-                color: FlutterFlowTheme.of(context).primaryColor,
+                color: Color(0xFFE08B00),
               ),
             ),
           );
